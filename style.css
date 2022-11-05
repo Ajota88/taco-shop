@@ -56,6 +56,23 @@ textarea {
   --MARGIN: clamp(1em, 2.5vh; 1.5em) 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --BGCOLOR: #000;
+    --BGCOLOR-FADE: gray;
+    --HEADER-COLOR: whitesmoke;
+    --NAV-BGCOLOR: rgb(20, 20, 20);
+    --HERO-COLOR: #333;
+    --BODY-BGCOLOR: #333;
+    --FONT-COLOR: whitesmoke;
+    --HIGHLIGHT-COLOR: whitesmoke;
+    --BORDER-COLOR: whitesmoke;
+    --LINK-COLOR: whitesmoke;
+    --LINK-HOVER: orange;
+    --LINK-ACTIVE: rgb(252, 200, 103);
+  }
+}
+
 /*UTILITY CLASSES*/
 .offscreen {
   position: absolute;
@@ -204,7 +221,7 @@ a:active {
   margin-top: 1em;
 }
 .main__article:last-child {
-  min-height: calc(100vh - 25rem);
+  min-height: calc(100vh - 20rem);
 }
 
 /*ABOUT*/
@@ -247,4 +264,91 @@ a:active {
   border-radius: 15px;
   background-color: var(--HIGHLIGHT-COLOR);
   color: var(--HEADER-COLOR);
+}
+
+/*MENU*/
+thead,
+tbody,
+tfoot,
+tr {
+  display: contents;
+}
+
+.menu__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "hd1 hd2 hd3"
+    "cr cr1 cr1p"
+    "cr cr2 cr2p"
+    "cr cr3 cr3p"
+    "sf sf1 sf1p"
+    "sf sf2 sf2p"
+    "sf sf3 sf3p"
+    "cs cs cs";
+  gap: 0.1em;
+  margin-bottom: 1em;
+}
+
+.menu__cr {
+  grid-area: cr;
+}
+
+.menu__sf {
+  grid-area: sf;
+}
+
+.menu__cs {
+  grid-area: cs;
+}
+
+.menu__cr,
+.menu__sf,
+.menu__cs,
+.menu__header {
+  color: var(--HIGHLIGHT-COLOR);
+  font-weight: bold;
+  height: 100%;
+  display: grid;
+  place-content: center;
+}
+
+.menu__header,
+.menu__item {
+  width: 100%;
+  padding: 1em;
+  border: medium ridge var(--BORDER-COLOR);
+}
+
+.menu__item {
+  display: grid;
+  place-content: center;
+}
+
+thead th:first-child {
+  border-top-left-radius: 15px;
+}
+thead th:last-child {
+  border-top-right-radius: 15px;
+}
+
+tfoot td {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+@media screen and (min-width: 576px) {
+  .header__h1::before {
+    content: "🌮 ";
+  }
+  .header__h1::after {
+    content: " 🌮";
+  }
+
+  .menu__header,
+  .menu__cr,
+  .menu__sf,
+  .menu__cs {
+    font-size: 125%;
+  }
 }
